@@ -1,0 +1,15 @@
+@import url(sidebar.css);
+@import url(components/ContentCard/ContentCard.css);
+@import url(components/ContentCard/ConversationCard/ConversationCard.css);
+
+html, body{
+    margin: 0px;
+    padding: 0px;
+
+    overflow: hidden;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+}
