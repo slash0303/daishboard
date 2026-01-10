@@ -1,4 +1,5 @@
 @import url(sidebar.css);
+@import url(cardContainer.css);
 @import url(components/ContentCard/ContentCard.css);
 @import url(components/ContentCard/ConversationCard/ConversationCard.css);
 
@@ -7,6 +8,8 @@ html, body{
     padding: 0px;
 
     overflow: hidden;
+
+    font-family: Pretendard JP;
 }
 
 body{

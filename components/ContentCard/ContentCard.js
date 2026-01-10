@@ -1,5 +1,6 @@
 import { createElement } from "../createElement.js";
 import ConversationCard from "./ConversationCard/ConversationCard.js";
+import { ConversationContainer, ConversationText } from "./ConversationCard/ConversationContainer.js";
 
 
 class ContentCard extends HTMLElement{
@@ -44,5 +45,7 @@ class ContentCard extends HTMLElement{
     }
 }
 
-customElements.define("conversation-card", ConversationCard);
-customElements.define("content-card", ContentCard);
+customElements.define("conversation-text", ConversationText, {extends: "div"});
+customElements.define("conversation-container", ConversationContainer, {extends: "div"});
+customElements.define("conversation-card", ConversationCard, {extends: "div"});
+customElements.define("content-card", ContentCard, {extends: "div"});
