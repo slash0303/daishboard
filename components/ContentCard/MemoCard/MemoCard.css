@@ -1,0 +1,16 @@
+.memo-card{
+    padding: 5rem 4rem;
+
+    background-color: #FFFFFF;
+    color: black;
+}
+
+.memo-text.title{
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.memo-text.content{
+    font-size: 1rem;
+}

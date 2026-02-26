@@ -3,12 +3,12 @@
     width: 80vw;
     height: 100vh;
 
-    padding: 1rem 0rem;
-
+    /* padding: 1rem 0rem; */
+    
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
-
+    
     background-color: #E8E8E8;
 }
 
@@ -18,16 +18,17 @@
 
 .card{
     flex-shrink: 0;
-
-    border-radius: 0.5rem;
-
+    
+    /* border-radius: 0.5rem; */
+    
     box-sizing: border-box;
     width: 36rem;
     height: 100%;
-
-    margin: 0rem 0.5rem;
-
-    box-shadow: 0px 0px 1rem 3px #82828248;
+    margin-right: 0.5rem;
+    
+    /* margin: 0rem 0.5rem; */
+    
+    /* box-shadow: 0px 0px 1rem 3px #82828248; */
 }
 
 .card-text{
@@ -44,7 +45,7 @@
     width: 100%;
     height: 4%;
 
-    border-radius: 0px 0px 1rem 1rem;
+    /* border-radius: 0px 0px 1rem 1rem; */
 
     text-align: center;
 

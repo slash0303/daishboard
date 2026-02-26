@@ -1,7 +1,9 @@
 import { createElement } from "../createElement.js";
 import ConversationCard from "./ConversationCard/ConversationCard.js";
-import { ConversationContainer, ConversationText } from "./ConversationCard/ConversationContainer.js";
-
+import { ConversationContainer } from "./ConversationCard/ConversationContainer.js";
+import { ConversationText } from "./ConversationCard/ConversationText.js";
+import { HyperModal } from "./HyperModal/HyperModal.js";
+import { MemoCard } from "./MemoCard/MemoCard.js";
 
 class ContentCard extends HTMLElement{
     connectedCallback(){
@@ -42,10 +44,45 @@ class ContentCard extends HTMLElement{
         else{
             throw Error("Card type mismatch.");
         }
+        this.addEventListener("mouseup", ()=>{
+            const selection = document.getSelection();
+            let selectedText = selection.toString();
+            const hyperModalElem = document.getElementById("hyperModal");
+            console.log(selectedText);
+            if(selectedText != ""){
+                hyperModalElem.setAttribute("enable", true);
+                const selectedArea = selection.getRangeAt(0).getBoundingClientRect();
+                
+                // const hyperModalElemStyle = hyperModalElem.getAttribute("style") ?? "";
+
+                console.log(typeof(selectedText));
+                if(selectedText.length > 18){
+                    selectedText = selectedText.slice(0, 15) + "...";
+                }
+                hyperModalElem.setAttribute("keyword", selectedText);
+                hyperModalElem.setAttribute("top", selectedArea.bottom);
+                hyperModalElem.setAttribute("left", selectedArea.right);
+            }
+            else{
+                hyperModalElem.setAttribute("enable", false);
+            }
+
+        });
     }
 }
 
-customElements.define("conversation-text", ConversationText, {extends: "div"});
-customElements.define("conversation-container", ConversationContainer, {extends: "div"});
-customElements.define("conversation-card", ConversationCard, {extends: "div"});
-customElements.define("content-card", ContentCard, {extends: "div"});
+customElements.define("conversation-text", ConversationText);
+customElements.define("conversation-container", ConversationContainer);
+customElements.define("conversation-card", ConversationCard);
+customElements.define("memo-card", MemoCard);
+customElements.define("hyper-modal", HyperModal);
+customElements.define("content-card", ContentCard);
+
+class CurrentNoteInfo{
+    constructor(noteId, focusedCard){
+        this.noteId = noteId;
+        this.focusedCard = focusedCard;
+    }
+}
+
+export { CurrentNoteInfo };

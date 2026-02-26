@@ -9,36 +9,14 @@
 <script src="components/common/ImgButton/ImgButton.js" type="module"></script>
 <script src="components/ContentCard/ContentCard.js" type="module"></script>
 <body>
+    <hyper-modal id="hyperModal" enable="false"></hyper-modal>
     <div id="sidebarContainer" class="sidebar-container">
         <img-button id="hello" class="sidebar-logo" src="./res/logoWText.png"></img-button>
     </div>
     <div id="cardContainer" class="card-container">
         <div class="startPadding" style="width: 0.5rem; flex-shrink: 0;"></div>
-        <div class="note-card">
-            <div class="card-title"></div>
-            <div class="card-text"></div>
-            <div class="card-bottom-indicator">hello world</div>
-        </div>
-        <div class="card">
-            <div class="conversation-card">
-                <div class="conversation-card card-title">new conversation</div>
-                <div class="conversation-container">
-                    <div class="text user">hello</div>
-                    <hr class="conversation-divline"></hr>
-                    <div class="descriptor ai">thinking...</div>
-                    <div class="text ai">nice to meet you XD</div>
-                    <hr class="conversation-divline"></hr>
-                </div>
-                <div class="chat-container">
-                    <textarea name="" id="" class="chat-field"></textarea>
-                    <button class="send-chat">
-                        <img src="" alt="" class="send-chat-icon">
-                    </button>
-                </div>
-            </div>
-        </div>
-        <note-card title="hello" text="it's me"></note-card>
         <content-card cardType="conversation"></content-card>
+        <memo-card title="ello" content="Lorem Ipsum"></memo-card>
     </div>
 </body>
 </html>

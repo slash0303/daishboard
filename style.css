@@ -1,7 +1,8 @@
-@import url(sidebar.css);
-@import url(cardContainer.css);
+@import url(sidebar.css); 
 @import url(components/ContentCard/ContentCard.css);
 @import url(components/ContentCard/ConversationCard/ConversationCard.css);
+@import url(components/ContentCard/MemoCard/MemoCard.css);
+@import url(components/ContentCard/HyperModal/HyperModal.css);
 
 html, body{
     margin: 0px;
@@ -10,9 +11,16 @@ html, body{
     overflow: hidden;
 
     font-family: Pretendard JP;
+
+    width: 100vw;
+    height: 100vh;
 }
 
 body{
     display: flex;
     flex-direction: row;
+}
+
+body::selection{
+    background-color: #78787884;
 }

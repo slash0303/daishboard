@@ -1,0 +1,63 @@
+{
+    "name": "note1",
+    "noteId": "n_12941535",
+    "conversationCount": 3,
+    "memoCount": 4,
+
+    "cardOrder": {
+        "casdf12421": {
+            "masdf21152": {
+                "end": true
+            }
+        }
+    },
+
+    "cards": {
+        "c_33512421": {
+            "cardType": "conversation",
+            "cardName": "new conversation",
+            "refCount": 1,
+            "datas": [
+                {   
+                    "from": "user",
+                    "msg": [
+                        {
+                            "text": "hello",
+                            "hyperId": "h_m_35221152_0"
+                        },
+                        {
+                            "text": "nice to"
+                        },
+                        {
+                            "text": "meet",
+                            "hyperId": "h_m_35221152_1"
+                        },
+                        {
+                            "text": "you XD"
+                        }
+                    ],
+                    "time": "20260113_123940",
+                },
+                {
+                    "from": "ai",
+                    "msg": "nice to see you!",
+                    "time": "20260113_123942"
+                }
+            ]
+        },
+        "m_35221152": {
+            "cardType": "memo",
+            "cardName": "new memo",
+            "refCount": 2,
+            "datas": [
+                {
+                    "text": "'hello world'",
+                    "hyperId": "h_c_33512421_0"
+                },
+                {
+                    "text": " is the most famous sentence in programming world."
+                }
+            ]
+        }
+    }
+}

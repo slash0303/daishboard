@@ -1,0 +1,19 @@
+.hypermodal-container{
+    position: absolute;
+    display: inline-flex;
+    border-radius: 0px 0.4rem 0.4rem 0.4rem;
+    background-color: #FFFFFF;
+
+    box-shadow: 0.11rem 0.1rem 1rem #99999970;
+
+    flex-direction: column;
+}
+
+.hypermodal-btn{
+    outline: none;
+    border: none;
+
+    background-color: #00000000;
+    padding: 0.4rem;
+    font-size: 0.8rem;
+}
