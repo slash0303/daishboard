@@ -9,7 +9,7 @@ from langchain_core.output_parsers import StrOutputParser
 llm = ChatOpenAI(
     base_url="http://localhost:1234/v1",
     api_key="lm-studio",
-    model="exaone-4.0-1.2b@bf16",
+    model="qwen/qwen3-vl-4b",
     temperature=0.1,
     streaming=True,
     callbacks=[StreamingStdOutCallbackHandler()], # 스트림 출력 콜백
