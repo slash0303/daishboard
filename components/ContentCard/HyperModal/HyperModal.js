@@ -21,7 +21,7 @@ class HyperModal extends HTMLElement{
             id: "memoBtn"
         });
         memoBtn.addEventListener("click", ()=>{
-            createNewCard("memo");      // TODO: create new function
+            createNewCard("memo");      // TODO: 이름만 지어둔거
         });
         this.appendChild(memoBtn);
         const conversationBtn = createElement("button", {
@@ -29,7 +29,7 @@ class HyperModal extends HTMLElement{
             id: "conversationBtn"
         });
         conversationBtn.addEventListener("click", ()=>{
-            createNewCard("conversation");  // TODO: create new function
+            createNewCard("conversation");  // TODO: 이름만 지어둔거
         });
         this.appendChild(conversationBtn);
     }
@@ -45,6 +45,7 @@ class HyperModal extends HTMLElement{
             this.top = this.getAttribute("top");
             this.left = this.getAttribute("left");
 
+            // update the position.
             this.setAttribute("style", `display: flex; top: ${this.top}px; left: ${this.left}px;`);
     
             // Update description sentence with keyword.
