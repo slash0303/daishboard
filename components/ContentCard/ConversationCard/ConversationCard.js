@@ -2,9 +2,17 @@ import { getData } from "../../../scripts/common/fetchFunctions.js";
 import { createElement } from "../../createElement.js";
 
 class ConversationCard extends HTMLElement{
-    set watingResponse(state){
-        this.watingResponse;
-        // TODO: Change img of upload button of input field
+    updateLatestQuery(latestTextElement){
+        // check parameter's integrity
+        if(latestTextElement != undefined){
+            // upcount
+            this.queryCount++;
+            // scroll to display new element.
+            latestTextElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
     }
 
     connectedCallback(){
@@ -23,6 +31,15 @@ class ConversationCard extends HTMLElement{
         const conversationContainer = createElement("div", {
             class: "conversation-container"
         });
+
+        const conversationOnlyContainer = createElement("div");
+        conversationContainer.appendChild(conversationOnlyContainer);
+
+        const statusText = createElement("conversation-status-text", {
+            class: "conversation-status-text"
+        });
+        conversationContainer.appendChild(statusText);
+        
         this.appendChild(conversationContainer);
 
         const inputContainer = createElement("div", {
@@ -44,6 +61,7 @@ class ConversationCard extends HTMLElement{
                     if(!this.watingResponse){
                         // Set wating state to true.
                         this.watingResponse = true;
+                        statusText.setAttribute("status", "wating");
                         const userMsg = e.target.value;
         
                         // Check user message isn't empty.
@@ -56,16 +74,17 @@ class ConversationCard extends HTMLElement{
                                 const hr = createElement("hr", {
                                     class: "conversation-divline"
                                 });
-                                conversationContainer.appendChild(hr);
+                                conversationOnlyContainer.appendChild(hr);
                             }
-                            // Add query count.
-                            this.queryCount++;
+
                             // Create & append text element in conversation container.
                             const userText = createElement("conversation-text", {
                                 type: "user",
                                 msg: userMsg 
                             });
-                            conversationContainer.appendChild(userText);
+                            conversationOnlyContainer.appendChild(userText);
+
+                            this.updateLatestQuery(userText);
                             
                             // Send the query and get response.
                             const response = await getData("http://127.0.0.1:8080/chat/query", {msg: userMsg});
@@ -76,17 +95,19 @@ class ConversationCard extends HTMLElement{
                                 const hr = createElement("hr", {
                                     class: "conversation-divline"
                                 });
-                                conversationContainer.appendChild(hr);
+                                conversationOnlyContainer.appendChild(hr);
         
                                 // Create & append element which includes response text.
                                 const aiText = createElement("conversation-text", {
                                     class: "ai",
                                     msg: data.msg
                                 });
-                                conversationContainer.appendChild(aiText);
+                                conversationOnlyContainer.appendChild(aiText);
+                                this.updateLatestQuery(aiText);
                             }
                             // release the wating state.
                             this.watingResponse = false;
+                            statusText.setAttribute("status", "none");
                         }
                     }
                 }

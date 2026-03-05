@@ -1,6 +1,7 @@
 import { createElement } from "../createElement.js";
 import ConversationCard from "./ConversationCard/ConversationCard.js";
 import { ConversationContainer } from "./ConversationCard/ConversationContainer.js";
+import ConversationStatusText from "./ConversationCard/ConversationStatusText.js";
 import { ConversationText } from "./ConversationCard/ConversationText.js";
 import { HyperModal } from "./HyperModal/HyperModal.js";
 import { MemoCard } from "./MemoCard/MemoCard.js";
@@ -74,6 +75,7 @@ class ContentCard extends HTMLElement{
 customElements.define("conversation-text", ConversationText);
 customElements.define("conversation-container", ConversationContainer);
 customElements.define("conversation-card", ConversationCard);
+customElements.define("conversation-status-text", ConversationStatusText);
 customElements.define("memo-card", MemoCard);
 customElements.define("hyper-modal", HyperModal);
 customElements.define("content-card", ContentCard);
