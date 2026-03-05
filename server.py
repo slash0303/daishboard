@@ -6,10 +6,12 @@ from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHan
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
+MODEL_NAME = "qwen/qwen3-vl-4b"
+
 llm = ChatOpenAI(
     base_url="http://localhost:1234/v1",
     api_key="lm-studio",
-    model="qwen/qwen3-vl-4b",
+    model=MODEL_NAME,
     temperature=0.1,
     streaming=True,
     callbacks=[StreamingStdOutCallbackHandler()], # 스트림 출력 콜백
