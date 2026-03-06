@@ -19,6 +19,8 @@ class ConversationText extends HTMLElement{
         
         this.appendChild(text);
     }
+
+    static observed
 }
 
 export { ConversationText };

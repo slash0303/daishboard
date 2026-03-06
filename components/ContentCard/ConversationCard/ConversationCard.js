@@ -50,6 +50,13 @@ class ConversationCard extends HTMLElement{
             placeholder: "ask something...",
             resize: "false"
         });
+
+        // Set Image of send button
+        const inputButton = createElement("img-button", {
+            src: "../../../res/uploadIconEnabled.svg",
+            class: "send-chat-button",
+        });
+        
         // Keyboard event in inputfield.
         // TODO: Should seperate this function to another files.
         inputField.addEventListener("keydown", async (e)=>{
@@ -62,6 +69,7 @@ class ConversationCard extends HTMLElement{
                         // Set wating state to true.
                         this.watingResponse = true;
                         statusText.setAttribute("status", "wating");
+                        inputButton.setAttribute("src", "../../../res/uploadIconDisabled.svg");
                         const userMsg = e.target.value;
         
                         // Check user message isn't empty.
@@ -100,14 +108,18 @@ class ConversationCard extends HTMLElement{
                                 // Create & append element which includes response text.
                                 const aiText = createElement("conversation-text", {
                                     class: "ai",
-                                    msg: data.msg
+                                    msg: marked.parse(data.msg)     // from lib 'markedjs'
                                 });
                                 conversationOnlyContainer.appendChild(aiText);
                                 this.updateLatestQuery(aiText);
+                                // release the wating state.
+                                this.watingResponse = false;
+                                statusText.setAttribute("status", "none");
+                                inputButton.setAttribute("src", "../../../res/uploadIconEnabled.svg");
                             }
-                            // release the wating state.
-                            this.watingResponse = false;
-                            statusText.setAttribute("status", "none");
+                            else{
+                                statusText.setAttribute("status", "error");
+                            }
                         }
                     }
                 }
@@ -116,11 +128,6 @@ class ConversationCard extends HTMLElement{
 
         inputContainer.appendChild(inputField);
         
-        // Set Image of send button
-        const inputButton = createElement("img-button", {
-            src: "../../../res/uploadIconEnabled.svg",
-            class: "send-chat-button",
-        });
         // TODO: attach the seperated function same as keydown event of input field.
         inputButton.addEventListener("click", async (e)=>{
             if(!this.watingResponse){

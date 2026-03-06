@@ -5,6 +5,7 @@ class ConversationStatusText extends HTMLElement {
         const statusTextMap = {
             wating: "Wating response...",
             etc: "etc.",
+            error: "error occured",
             none: ""
         }
 
@@ -13,12 +14,7 @@ class ConversationStatusText extends HTMLElement {
             // change status text
             this.statusTextElement.innerHTML = statusTextMap[status];
             // change visibility
-            if(status == "none"){
-                this.setAttribute("style", "display: none");
-            }
-            else{
-                this.setAttribute("style", "");
-            }
+            this.statusTextElement.setAttribute("class", `status-text ${status}`);
         }
     }
 

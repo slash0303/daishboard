@@ -5,6 +5,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+import openai
 
 MODEL_NAME = "qwen/qwen3-vl-4b"
 
@@ -37,10 +38,13 @@ def send_ai_query():
 
     print(user_msg)
     # prompt for LLM
-    prompt = ChatPromptTemplate.from_template("{input}")
-    chain = prompt | llm | StrOutputParser()
-    msg = chain.invoke(str(user_msg))
-    return jsonify({"msg": msg})
+    try:
+        prompt = ChatPromptTemplate.from_template("{input}")
+        chain = prompt | llm | StrOutputParser()
+        msg = chain.invoke(str(user_msg))
+        return jsonify({"status": "ok", "msg": msg}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "msg": str(e)}), 508
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)

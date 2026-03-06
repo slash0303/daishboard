@@ -1,7 +1,11 @@
 .status-text {
     font-size: 0.8rem;
     font-weight: 600; /* 조금 더 굵어야 그라데이션이 잘 보여요 */
-    
+
+    user-select: none;
+}
+
+.status-text.wating {
     /* 1. 배경에 그라데이션 넣기 (원하는 색상으로 변경 가능) */
     background: linear-gradient(
         to right, 
@@ -10,17 +14,53 @@
         #a1c7f5 50%, 
         #b8b8b8 60%, 
         #646464 80%
-    );
-    background-size: 200% auto; /* 배경을 넓게 설정해서 움직일 공간 확보 */
-
-    /* 2. 배경을 글자 색상으로 쓰기 위한 설정 */
-    -webkit-background-clip: text;
+        );
+    background-size: 200% auto; /* 배경을 넓게 설정해서 움직일 공간 확보 */    
+    
+     /* 2. 배경을 글자 색상으로 쓰기 위한 설정 */
+    -webkit-background-clip: text; 
     background-clip: text;
     -webkit-text-fill-color: transparent; /* 글자 본래 색을 투명하게 */
     color: transparent;
 
     /* 3. 애니메이션 연결 */
     animation: textWave 2.5s linear infinite;
+}    
+
+.status-text.error {
+    background: #cd0000;
+    background-size: 200% auto; /* 배경을 넓게 설정해서 움직일 공간 확보 */
+    
+     /* 2. 배경을 글자 색상으로 쓰기 위한 설정 */
+    -webkit-background-clip: text; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* 글자 본래 색을 투명하게 */
+    color: transparent;
+
+    /* 3. 애니메이션 연결 */
+    animation: textImpulse 1s linear infinite;
+}    
+
+.status-text.none {
+    display: none;
+}    
+
+@keyframes textImpulse {
+    0% {
+        opacity: 0;
+    }
+    
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 /* 4. 배경 위치를 옮겨서 파도치는 느낌 주기 */
