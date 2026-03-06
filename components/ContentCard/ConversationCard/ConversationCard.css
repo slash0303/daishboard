@@ -54,14 +54,14 @@
 
 /* 애니메이션 정의 */
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* 컴포넌트에 적용 */
@@ -161,10 +161,10 @@
     }
 
     50% {
-        rotate: 180deg;
+        rotate: -180deg;
     }
 
     100% {
-        rotate: 360deg;
+        rotate: -360deg;
     }
 } */

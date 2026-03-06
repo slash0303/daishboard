@@ -8,6 +8,7 @@ class ImgButton extends HTMLElement{
             style = "";
         }
         this.setAttribute("style", style + "display: inline-flex;");
+        // create img element
         this.img = createElement("img", {
             src: this.getAttribute("src"),
             style: "width: 100%; height: 100%;"
@@ -18,7 +19,9 @@ class ImgButton extends HTMLElement{
     static observedAttributes = ["src"];
     attributeChangedCallback(){
         const src = this.getAttribute("src");
-        this.img.setAttribute("src", src);
+        if(this.img != undefined){
+            this.img.setAttribute("src", src);
+        }
     }
 }
 

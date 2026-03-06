@@ -67,7 +67,6 @@ class ContentCard extends HTMLElement{
             else{
                 hyperModalElem.setAttribute("enable", false);
             }
-
         });
     }
 }
