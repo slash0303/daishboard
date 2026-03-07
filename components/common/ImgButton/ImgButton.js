@@ -3,15 +3,15 @@ import { createElement } from "../../createElement.js";
 class ImgButton extends HTMLElement{
     connectedCallback(){
         // check style attribute is vailidate
-        let style = this.getAttribute("style");
-        if(style == null || style == undefined){
-            style = "";
-        }
-        this.setAttribute("style", style + "display: inline-flex;");
+        let style = this.getAttribute("style") ?? "";
+        this.setAttribute("style", style);
+        const prevClass = this.getAttribute("class") ?? "";
+        this.setAttribute("class", prevClass + " img-button-container");
         // create img element
         this.img = createElement("img", {
             src: this.getAttribute("src"),
-            style: "width: 100%; height: 100%;"
+            class: "img-button-img"
+            // style: "width: 100%; height: 100%;"
         });
         this.appendChild(this.img);
     }

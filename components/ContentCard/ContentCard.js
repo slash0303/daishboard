@@ -8,7 +8,7 @@ import { MemoCard } from "./MemoCard/MemoCard.js";
 
 class ContentCard extends HTMLElement{
     connectedCallback(){
-        const CARD_TYPE = {"conversation": true, "note": true};
+        const CARD_TYPE = {"conversation": true, "memo": true};
         // set id & class.
         if(this.getAttribute("id") == null){
             this.setAttribute("id", this.getAttribute("title"));
@@ -27,14 +27,15 @@ class ContentCard extends HTMLElement{
                     });
                     break;
 
-                case "note":
+                case "memo":
                     // create note type content.
                     content = createElement(cardType+"-card", {
                         title: this.getAttribute("title"),
-                        text: this.getAttribute("text")
+                        content: this.getAttribute("content")
                     });
                     break;
             }
+            console.log(content);
             if(content != null){
                 this.appendChild(content);
             }

@@ -37,14 +37,16 @@ def send_ai_query():
     user_msg = request.args.get("msg")
 
     print(user_msg)
-    # prompt for LLM
     try:
+        # prompt for LLM
         prompt = ChatPromptTemplate.from_template("{input}")
         chain = prompt | llm | StrOutputParser()
         msg = chain.invoke(str(user_msg))
-        return jsonify({"status": "ok", "msg": msg}), 200
+        return jsonify({"msg": msg}), 200
+    except openai.APIError as e:
+        return jsonify({"msg": str(e)}), 508
     except Exception as e:
-        return jsonify({"status": "error", "msg": str(e)}), 508
+        return jsonify({"msg": str(e)}), 500
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)

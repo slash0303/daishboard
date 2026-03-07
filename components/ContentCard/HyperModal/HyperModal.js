@@ -1,5 +1,24 @@
 import { createElement } from "../../createElement.js";
 
+function createNewCard(cardType){
+    // find card container
+    const cardContainer = document.getElementById("cardContainer");
+
+    const newCard = createElement("content-card", {
+        cardType: cardType,
+        id: null,   // TODO: id 채워야 함
+        title: "title",
+        content: "asdf"
+    });
+
+    
+    cardContainer.appendChild(newCard);
+    newCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    })
+}
+
 class HyperModal extends HTMLElement{
     // Generate text for modal button which includes dragged context(focused content).
     getMemoText(){
