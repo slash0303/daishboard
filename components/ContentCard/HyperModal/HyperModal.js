@@ -7,8 +7,8 @@ function createNewCard(cardType){
     const newCard = createElement("content-card", {
         cardType: cardType,
         id: null,   // TODO: id 채워야 함
-        title: "title",
-        content: "asdf"
+        title: `New ${cardType}`,   // default value
+        content: ""
     });
 
     
@@ -28,6 +28,11 @@ class HyperModal extends HTMLElement{
         return `'${this.keyword}'를 주제로 새 대화 시작하기`;
     }
 
+    newCardButtonClickEvent(cardType){
+        createNewCard(cardType);
+        this.setAttribute("enable", false);
+    }
+
     // Main
     connectedCallback(){
         // Set class of root element.
@@ -40,7 +45,7 @@ class HyperModal extends HTMLElement{
             id: "memoBtn"
         });
         memoBtn.addEventListener("click", ()=>{
-            createNewCard("memo");      // TODO: 이름만 지어둔거
+            this.newCardButtonClickEvent("memo");
         });
         this.appendChild(memoBtn);
         const conversationBtn = createElement("button", {
@@ -48,7 +53,8 @@ class HyperModal extends HTMLElement{
             id: "conversationBtn"
         });
         conversationBtn.addEventListener("click", ()=>{
-            createNewCard("conversation");  // TODO: 이름만 지어둔거
+            // createNewCard("conversation");
+            this.newCardButtonClickEvent("conversation");
         });
         this.appendChild(conversationBtn);
     }
