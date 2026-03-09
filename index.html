@@ -12,8 +12,18 @@
 <body>
     <!-- hyper-modal: modal element for every draagable context. -->
     <hyper-modal id="hyperModal" enable="false"></hyper-modal>
-    <div id="sidebarContainer" class="sidebar-container">
-        <img-button id="hello" class="sidebar-logo" src="./res/logoWText.png"></img-button>
+    <div id="sidebarContainer" class="sidebar sidebar__general-container">
+        <img-button id="hello" class="sidebar sidebar__logo" src="./res/logoWText.png"></img-button>
+        <div class="sidebar__content-container" id="recentContainer">
+            <div class="sidebar__label-container">
+                <div class="sidebar__label-text" id="recentContentLabel">Recent</div>
+                <hr class="sidebar__label-div-line">
+            </div>
+            <div class="sidebar__note-title-container">
+                <button class="sidebar__note-title-content">hello world!</button>
+                <button class="sidebar__note-title-content">hello world!</button>
+            </div>
+        </div>
     </div>
     <div id="cardContainer" class="card-container">
         <img-button id="leftCardButton" src="./res/arrowDown.svg" class="card-button left"></img-button>

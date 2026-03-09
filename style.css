@@ -7,6 +7,14 @@
 @import url(components/ContentCard/HyperModal/HyperModal.css);
 @import url(components/ContentCard/CardContainerButton.css);
 
+/* constants */
+
+/* default settings */
+*, *::before, *::after{
+    font-family: Pretendard JP;
+    box-sizing: border-box;
+}
+
 html, body{
     margin: 0px;
     padding: 0px;
