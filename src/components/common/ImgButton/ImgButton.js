@@ -1,4 +1,4 @@
-import { createElement } from "../../createElement.js";
+import { createElement } from "/src/components/createElement.js";
 
 class ImgButton extends HTMLElement{
     connectedCallback(){

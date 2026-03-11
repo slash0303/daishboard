@@ -1,10 +1,11 @@
-import { createElement } from "../createElement.js";
-import ConversationCard from "./ConversationCard/ConversationCard.js";
-import { ConversationContainer } from "./ConversationCard/ConversationContainer.js";
-import ConversationStatusText from "./ConversationCard/ConversationStatusText.js";
-import { ConversationText } from "./ConversationCard/ConversationText.js";
-import { HyperModal } from "./HyperModal/HyperModal.js";
-import { MemoCard } from "./MemoCard/MemoCard.js";
+import { createElement } from "/src/components/createElement.js";
+import ConversationCard from "/src/components/ContentCard/ConversationCard/ConversationCard.js";
+import { ConversationContainer } from "/src/components/ContentCard/ConversationCard/ConversationContainer.js";
+import ConversationStatusText from "/src/components/ContentCard/ConversationCard/ConversationStatusText.js";
+import { ConversationText } from "/src/components/ContentCard/ConversationCard/ConversationText.js";
+import { HyperModal } from "/src/components/ContentCard/HyperModal/HyperModal.js";
+import { MemoCard } from "/src/components/ContentCard/MemoCard/MemoCard.js";
+import CodeTitleBar from "/src/components/ContentCard/CodeDisplay/CodeTitleBar.js";
 
 class ContentCard extends HTMLElement{
     connectedCallback(){
@@ -72,6 +73,7 @@ class ContentCard extends HTMLElement{
     }
 }
 
+customElements.define("language-name-tag", CodeTitleBar);
 customElements.define("conversation-text", ConversationText);
 customElements.define("conversation-container", ConversationContainer);
 customElements.define("conversation-card", ConversationCard);
@@ -79,6 +81,7 @@ customElements.define("conversation-status-text", ConversationStatusText);
 customElements.define("memo-card", MemoCard);
 customElements.define("hyper-modal", HyperModal);
 customElements.define("content-card", ContentCard);
+
 
 class CurrentNoteInfo{
     constructor(noteId, focusedCard){

@@ -1,8 +1,8 @@
-import { getData } from "../../../scripts/common/fetchFunctions.js";
-import { createElement } from "../../createElement.js";
+import { getData } from "/src/utils/common/fetchFunctions.js";
+import { createElement } from "/src/components/createElement.js";
 
 // map for directory of icon
-const resRelDir = "../../../res"
+const resRelDir = "/src/res"
 const uploadIconDirMap = {
     enable: `${resRelDir}/uploadIconEnabled.svg`,
     disable: `${resRelDir}/uploadIconDisabled.svg`,
@@ -42,7 +42,7 @@ class ConversationCard extends HTMLElement{
         if(fromList.includes(from)){
             // parse markdown
             const processedMsg = from == "ai" ? marked.parse(msg) : msg;
-
+            
             // create container which includes divide line(hr) and text element.
             const textElementContainer = createElement("div", {
                 class: "textElementContainer"
@@ -55,7 +55,7 @@ class ConversationCard extends HTMLElement{
                 });
                 textElementContainer.appendChild(hr);
             }
-
+            
             // create text element
             const textElement = createElement("conversation-text", {
                 type: from,
@@ -67,6 +67,28 @@ class ConversationCard extends HTMLElement{
             this.conversationOnlyContainer.appendChild(textElementContainer);
             // update latest query. this function will scroll to show new text element on top.
             this.setLatestQuery(textElementContainer);
+
+            // console.log(textElement.querySelectorAll("pre code"));
+
+            const statusModal = document.getElementById("statusModal");
+            textElement.querySelectorAll("pre code")?.forEach((codeElem)=>{
+                // apply syntax highlight
+                hljs.highlightElement(codeElem);        // from highligh.js
+                // extract language name from class of 'code' tag.
+                const langName = codeElem.getAttribute("class").split(" ")[0].split("-")[1];
+                // create & append name tag
+                const langNameElement = createElement("language-name-tag", 
+                    {
+                        language: langName,
+                        copyTarget: codeElem.innerText
+                    });
+                codeElem.parentElement.insertBefore(langNameElement, codeElem);
+                // copy code when user click the code area.
+                codeElem.addEventListener("click", (e)=>{
+                    navigator.clipboard.writeText(e.target.innerText);
+                    statusModal.innerHTML = e.target.innerText;
+                });// TODO: 이거 잘못 누르면 단어만 복사 됨 이렇게 하지말고 그냥 오른쪽 위에 복사 아이콘 띄워주고 복사 시키는게 나을듯 ㅇㅇ..
+            });
         }
     }
 

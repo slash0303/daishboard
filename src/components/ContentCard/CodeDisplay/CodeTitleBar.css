@@ -1,0 +1,42 @@
+.code-title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    border-radius: 1rem 1rem 0rem 0rem;
+    padding: 0.4rem 1rem;
+    /* display: block; */
+    /* margin-bottom: 0.1rem; */
+
+    background-color: #f3f3f3;
+
+    font-family: Cascadia Code;
+}
+
+.code-title-bar__language-name-tag {
+    font-family: inherit;
+    color: #000000;
+    font-weight: bold;
+}
+
+.code-title-bar__copy-button-container{
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    align-items: center;
+    font-family: inherit;
+}
+
+.copy-button-container__copy-button{
+    width: 1rem;
+    height: 1rem;
+    color: #000000;
+}
+
+.copy-button-container__copy-text{
+    font-size: 0.8rem;
+    /* font-family: inherit; */
+    user-select: none;
+    color: #000000;
+}

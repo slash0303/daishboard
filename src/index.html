@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daishboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/src/res/favIcon.png">
+    <script src="components/common/ImgButton/ImgButton.js" type="module"></script>
+    <script src="components/ContentCard/ContentCard.js" type="module"></script>
+    <!-- marked.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js" type="module"></script>
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 </head>
-<script src="components/common/ImgButton/ImgButton.js" type="module"></script>
-<script src="components/ContentCard/ContentCard.js" type="module"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js" type="module"></script>
 <body>
-    <!-- hyper-modal: modal element for every draagable context. -->
+    <!-- hyper-modal: tiny modal element for every draagable context. -->
     <hyper-modal id="hyperModal" enable="false"></hyper-modal>
+    <!-- <div id="statusModal">fuck</div> -->
     <div id="sidebarContainer" class="sidebar sidebar__general-container">
         <img-button id="hello" class="sidebar sidebar__logo" src="./res/logoWText.png"></img-button>
         <div class="sidebar__content-container" id="recentContainer">

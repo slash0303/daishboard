@@ -1,5 +1,5 @@
-import { createElement } from "../../createElement.js";
-import { getTimestamp } from "../../../scripts/common/timeFunctions.js";
+import { createElement } from "/src/components/createElement.js";
+import { getTimestamp } from "/src/utils/common/timeFunctions.js";
 
 class ConversationText extends HTMLElement{
     connectedCallback(){
